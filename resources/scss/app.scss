@@ -1,0 +1,25 @@
+@import '~bootstrap/scss/bootstrap';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.portfolio-home{
+    height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-button{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+}
