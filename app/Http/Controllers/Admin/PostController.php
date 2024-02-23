@@ -42,9 +42,9 @@ class PostController extends Controller
         $form_data = $request->all();
 
         $post = new Post();
-        $post->fill($form_data);
         $slug = Str::slug($form_data['name'], '-');
-        $post->slug =  $slug;
+        $form_data['slug'] = $slug;
+        $post->fill($form_data);
 
         $post->save();
 
@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -82,7 +82,12 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $form_data = $request->all();
+        $slug = Str::slug($form_data['name'], '-');
+        $form_data['slug'] = $slug;
+        $post->update($form_data);
+
+        return redirect()->route('admin.posts.index', ['post' =>  $post->slug]);
     }
 
     /**

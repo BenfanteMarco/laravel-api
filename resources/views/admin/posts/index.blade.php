@@ -34,7 +34,10 @@
                                 <td>{{ $post->slug }}</td>
                                 <td>
                                     <a href="{{ route('admin.posts.show', ['post' => $post->slug]) }}">
-                                        <i class="fa-solid fa-eye fa-xl color-primary"></i>
+                                        <i class="fa-solid fa-eye fa-xl color-primary mr-2"></i>
+                                    </a>
+                                    <a href="{{ route('admin.posts.edit', ['post' => $post->slug]) }}">
+                                        <i class="fa-solid fa-edit fa-xl text-warning mr-2"></i>
                                     </a>
                                 </td>
                             </tr>
