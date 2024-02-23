@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -27,7 +28,7 @@ class PostController extends Controller
      */ 
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -38,7 +39,16 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $post = new Post();
+        $post->fill($form_data);
+        $slug = Str::slug($post->name, '-');
+        $post->slug =  $slug;
+
+        $post->save();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**

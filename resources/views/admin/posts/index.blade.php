@@ -7,7 +7,7 @@
             <div class="pt-5">
                 <div class="d-flex justify-content-between align-items-center ">
                     <h2>Repository</h2>
-                    <a href="#" class="btn btn-primary">Add Repo</a>
+                    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Add Repo</a>
                 </div>
             </div>
         </div>
@@ -21,20 +21,22 @@
                             <th scope="col">Description</th>
                             <th scope="col">Repository Link</th>
                             <th scope="col">Slug</th>
+                            <th scope="col">Tools</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
                                 <th scope="row">{{ $post->id }}</th>
-                                <td>
-                                    <a href="{{ route('admin.posts.show', ['post' => $post->slug]) }}">
-                                        {{ $post->name }}
-                                    </a>
-                                </td>
+                                <td>{{ $post->name }}</td>
                                 <td>{{ $post->description }}</td>
                                 <td>{{ $post->repository_link }}</td>
                                 <td>{{ $post->slug }}</td>
+                                <td>
+                                    <a href="{{ route('admin.posts.show', ['post' => $post->slug]) }}">
+                                        <i class="fa-solid fa-eye fa-xl color-primary"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
