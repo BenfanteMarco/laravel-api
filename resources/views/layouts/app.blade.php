@@ -88,7 +88,34 @@
         </nav>
 
         <main class="">
-            @yield('content')
+            <div class="display-flex">
+                <div class="row">
+        
+                    {{-- Sidebar --}}
+                    <div class="col-2">
+                        <div class="sidebar">
+                            <div class="sidebar_list">
+                                <div
+                                    class="{{ Route::currentRouteName() == 'admin.index' ? 'segna-libro' : '' }} p-4">
+                                    <a href="{{ route('admin.index') }}">Home</a>
+                                </div>
+                                <div
+                                    class="{{ Route::currentRouteName() == 'admin.posts.index' ? 'segna-libro' : '' }} p-4">
+                                    <a href="{{ route('admin.posts.index') }}">
+                                        Repository</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                    <div class="col-10">
+                        <div class="main-content-container">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>

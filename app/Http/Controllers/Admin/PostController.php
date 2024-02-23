@@ -43,7 +43,7 @@ class PostController extends Controller
 
         $post = new Post();
         $post->fill($form_data);
-        $slug = Str::slug($post->name, '-');
+        $slug = Str::slug($form_data['name'], '-');
         $post->slug =  $slug;
 
         $post->save();

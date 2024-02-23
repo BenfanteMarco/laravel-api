@@ -24,3 +24,42 @@
     background-color: black;
 }
 
+// MAIN CONTENT AND SIDEBAR
+main {
+    overflow-x: hidden;
+    .main-content-container {
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: calc(100vh - 70px);
+    }
+    .sidebar {
+        height: calc(100vh - 70px);
+        background-color: rgb(255, 255, 255);
+        display: flex;
+
+        .sidebar_list {
+            width: 100%;
+
+            .segna-libro{
+                border-bottom: 2px solid rgb(71, 71, 71);
+                width: 75%;
+            }
+
+            div {
+                cursor: pointer;
+
+                a {
+                    text-decoration: none;
+                    color: rgb(73, 73, 73);
+                    font-weight: bold;
+                }
+            }
+
+
+        }
+    }
+}
+
+.bg-grey{
+    color: rgb(76, 76, 76);
+}
