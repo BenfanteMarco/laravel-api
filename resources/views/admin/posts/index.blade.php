@@ -39,13 +39,18 @@
                                     <a href="{{ route('admin.posts.edit', ['post' => $post->slug]) }}">
                                         <i class="fa-solid fa-edit fa-xl text-warning mr-2"></i>
                                     </a>
+                                    <button class="btn btn-sm btn-square btn-danger" data-bs-toggle="modal" data-bs-target="#modal_post_delete-{{$post->slug}}">
+                                        <i class="fas fa-trash mr-2"></i>
+                                    </button>
+
+                                    @include('admin.posts.modal_delete')
                                 </td>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
