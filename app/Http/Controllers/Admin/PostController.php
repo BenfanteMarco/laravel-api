@@ -96,6 +96,15 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $form_data = $request->all();
+
+        if($request->hasFile('cover_image')){
+            if($post->cover_image != null){
+                Storage::delete($post->cover_image);
+            }
+            $path = Storage::disk('public')->put('posts_image', $form_data['cover_image']);
+            $form_data['cover_image'] = $path;
+        }
+
         $slug = Str::slug($form_data['name'], '-');
         $form_data['slug'] = $slug;
         $post->update($form_data);
@@ -111,6 +120,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->cover_image != null){
+            Storage::delete($post->cover_image);
+        }
         $post->delete();
         return redirect()->route('admin.posts.index');
     }

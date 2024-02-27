@@ -14,13 +14,27 @@
 		                </ul>
 	                </div>
                 @endif --}}
-                <form action="{{ route('admin.posts.update', ['post' => $post->slug]) }}" method="post">
+                <form action="{{ route('admin.posts.update', ['post' => $post->slug]) }}" method="post" enctype=“multipart/form-data”>
                     @csrf
                     @method('PUT')
                     <div class="form-group mt-3">
                         <label for="name" class="control-label">Name:</label>
                         <input required type="text" name="name" id="name" placeholder="Name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?? $post->name }}">
                         @error('name')
+	                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="cover_image" class="control-label">Img:</label>
+                        @if($post->cover_image != null)
+                            <div>
+                                <img src="{{ asset('/storage/' . $post->cover_image) }}" alt="" width="300">
+                            </div>
+                        @else
+                            <h2>immagine non presente</h2>
+                        @endif
+                        <input type="file" accept="image/*" name="cover_image" id="cover_image" class="form-control @error('cover_image') is-invalid @enderror">
+                        @error('cover_image')
 	                        <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
