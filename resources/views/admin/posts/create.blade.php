@@ -14,12 +14,19 @@
 		                </ul>
 	                </div>
                 @endif --}}
-                <form action="{{ route('admin.posts.store') }}" method="post">
+                <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mt-3">
                         <label for="name" class="control-label">Name:</label>
                         <input required type="text" name="name" id="name" placeholder="Name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                         @error('name')
+	                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="cover_image" class="control-label">Img:</label>
+                        <input type="file" accept="image/*" name="cover_image" id="cover_image" class="form-control @error('cover_image') is-invalid @enderror">
+                        @error('cover_image')
 	                        <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>

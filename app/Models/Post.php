@@ -11,8 +11,9 @@ class Post extends Model
     protected $fillable =
     [
         'name',
+        'cover_image',
         'description',
         'repository_link',
-        'slug'
+        'slug',
     ];
 }

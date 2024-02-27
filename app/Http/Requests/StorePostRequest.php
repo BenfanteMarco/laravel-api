@@ -27,6 +27,7 @@ class StorePostRequest extends FormRequest
             'name' => 'required|max:150',
             'description' => 'required',
             'repository_link' => 'required|max:255',
+            'cover_image' => 'required',
         ];
     }
     public function messages()
@@ -37,6 +38,7 @@ class StorePostRequest extends FormRequest
             'description.required' => 'The project description is required!',
             'repository_link.required' => 'The repository link is required!',
             'repository_link.max' => 'The repository link must not be longer than 255 characters!',
+            'cover_image' => 'Choose the file!'
         ];
     }
 }

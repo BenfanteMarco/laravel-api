@@ -5,32 +5,16 @@
         <div class="row">
             <div class="col-12">
                 <div class="py-5">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Repository Link</th>
-                                <th scope="col">Slug</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <th scope="row">{{ $post->id }}</th>
-                                <td>
-                                    <a>
-                                        {{ $post->name }}
-                                    </a>
-                                </td>
-                                <td>{{ $post->description }}</td>
-                                <td>{{ $post->repository_link }}</td>
-                                <td>{{ $post->slug }}</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                    <h3>Name:</h3>
+                    <p>{{ $post->name }}</p>
+                    <h5>Image:</h5>
+                    <img src="{{ asset('/storage/' . $post->cover_image) }}" width="300" alt="">
+                    <h5>Description:</h5>
+                    <p>{{ $post->description }}</p>
+                    <h5>Repository:</h5>
+                    <p>{{ $post->repository_link }}</p>
+                    <h5>Slug:</h5>
+                    <p>{{ $post->slug }}</p>
                 </div>
             </div>
         </div>
