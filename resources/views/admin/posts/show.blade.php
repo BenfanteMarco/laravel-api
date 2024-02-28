@@ -7,6 +7,8 @@
                 <div class="py-5">
                     <h3>Name:</h3>
                     <p>{{ $post->name }}</p>
+                    <h5>Type:</h5>
+                    <p>{{ $post->type != null ? $post->type->name : 'Senza categoria'}}</p>
                     <h5>Image:</h5>
                     <img src="{{ asset('/storage/' . $post->cover_image) }}" width="300" alt="">
                     <h5>Description:</h5>

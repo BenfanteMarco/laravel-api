@@ -18,6 +18,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Type</th>
                             <th scope="col">Description</th>
                             <th scope="col">Repository Link</th>
                             <th scope="col">Slug</th>
@@ -29,6 +30,7 @@
                             <tr>
                                 <th scope="row">{{ $post->id }}</th>
                                 <td>{{ $post->name }}</td>
+                                <td>{{ $post->type != null ? $post->type->name : 'Senza categoria' }}</td>
                                 <td>{{ $post->description }}</td>
                                 <td>{{ $post->repository_link }}</td>
                                 <td>{{ $post->slug }}</td>

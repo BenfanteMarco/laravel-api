@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 
 class PostController extends Controller
 {
@@ -29,7 +30,8 @@ class PostController extends Controller
      */ 
     public function create()
     {
-        return view('admin.posts.create');
+        $types = Type::all();
+        return view('admin.posts.create', compact('types'));
     }
 
     /**
@@ -83,7 +85,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $types = Type::all();
+        return view('admin.posts.edit', compact('post', 'types'));
     }
 
     /**
