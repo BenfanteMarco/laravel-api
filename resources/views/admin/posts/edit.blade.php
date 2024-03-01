@@ -37,6 +37,15 @@
                             @enderror
                     </div>
                     <div class="form-group mt-3">
+                        <label for="" class="control-label">Techs used:</label>
+                        <div class="d-flex">
+                            @foreach ($technologies as $tech)
+                                <input type="checkbox" class="ms-2" name="technology[]" id="technology-{{ $tech->id }}" value="{{ $tech->id }}" {{ $post->technologies->contains($tech->id) ? 'checked' : '' }}>
+                                <div for="" class="ms-1">{{ $tech->name }}</div>
+                            @endforeach 
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
                         <label for="cover_image" class="control-label">Img:</label>
                         @if($post->cover_image != null)
                             <div>

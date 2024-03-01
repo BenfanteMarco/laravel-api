@@ -36,6 +36,15 @@
                             @enderror
                     </div>
                     <div class="form-group mt-3">
+                        <label for="" class="control-label">Techs used:</label>
+                        <div class="d-flex">
+                            @foreach ($technologies as $tech)
+                                <input type="checkbox" class="ms-2" name="technology[]" id="technology-{{ $tech->id }}" value="{{ $tech->id }}" @checked(is_array(old('technology')) && in_array($tech->id, old('technology')))>
+                                <div for="" class="ms-1">{{ $tech->name }}</div>
+                            @endforeach 
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
                         <label for="cover_image" class="control-label">Img:</label>
                         <input type="file" accept="image/*" name="cover_image" id="cover_image" class="form-control @error('cover_image') is-invalid @enderror">
                         @error('cover_image')

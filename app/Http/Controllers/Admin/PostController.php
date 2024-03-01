@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
+use App\Models\Technology;
 
 class PostController extends Controller
 {
@@ -31,7 +32,8 @@ class PostController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.posts.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.posts.create', compact('types', 'technologies'));
     }
 
     /**
@@ -63,6 +65,10 @@ class PostController extends Controller
 
         $post->save();
 
+        if ($request->has('technology')){
+            $post->technologies()->attach($form_data['technology']);
+        }
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -86,7 +92,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $types = Type::all();
-        return view('admin.posts.edit', compact('post', 'types'));
+        $technologies = Technology::all();
+        return view('admin.posts.edit', compact('post', 'types', 'technologies'));
     }
 
     /**
@@ -112,6 +119,10 @@ class PostController extends Controller
         $form_data['slug'] = $slug;
         $post->update($form_data);
 
+        if ($request->has('technology')){
+            $post->technologies()->sync($form_data['technology']);
+        }
+
         return redirect()->route('admin.posts.index', ['post' =>  $post->slug]);
     }
 
@@ -126,6 +137,7 @@ class PostController extends Controller
         if($post->cover_image != null){
             Storage::delete($post->cover_image);
         }
+        $post->technologies()->sync([]);
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
